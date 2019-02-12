@@ -1,0 +1,8 @@
+init_config:
+  min_collection_interval: 120
+  default_timeout: 5
+  client_id: MkcLNaOSOME8mA
+  client_agent: sts-agent
+
+instances:
+  -   refresh_token: {{ REPLACE ME WITH AN ACCOUNTS REFRESH TOKEN -- SEE README }}
