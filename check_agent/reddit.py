@@ -64,7 +64,7 @@ class RedditCheck(AgentCheck):
             access_token=access_token,
             filter_query=lambda entry:
             entry.get("data", {}).get("created_utc", 0) > last_collection_time_utc
-        )[:4]
+        )[:10]
 
     def _get_api_url(self, path):
         return "https://oauth.reddit.com/{path}".format(path=path)

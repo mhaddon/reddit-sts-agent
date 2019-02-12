@@ -14,11 +14,12 @@ After access has been granted the user is presented with a Refresh Token, which 
 
 ### How To Generate A Refresh Token
 
-1. Run `run_auth_server.sh` or `python auth_server/server.py`
-2. Go to `http://127.0.0.1:65010/` in your browser
-3. Click `Authenticate`
-4. Log into Reddit & grant access
-5. Copy the refresh token provided
+1. Install dependencies: `pip install flask requests --user`
+2. Run `run_auth_server.sh` or `python auth_server/server.py` - Python 2.7.15 was used
+3. Go to `http://127.0.0.1:65010/` in your browser
+4. Click `Authenticate`
+5. Log into Reddit & grant access
+6. Copy the refresh token provided
 
 ###### Warning: The Refresh Token is permanent with no expiry date. Please keep it safe.
 
@@ -33,6 +34,8 @@ When you run the auth server several environments are accepted:
 The PORT & CALLBACK_PATH are dependant on the config for the `redirect uri` on the apps config on Reddit.
 
 For example: A `redirect uri` of `http://localhost:65010/reddit_callback` would have the PORT of `65010` and the CALLBACK_PATH of `reddit_callback`
+
+A containerised version is provided for environments without python or a different setup. Run `run_auth_server_in_container.sh`
 
 ---
 
@@ -76,13 +79,12 @@ However, since getting the agent packages working on my local machine was a hass
 
 ### How To Install
 
-1. `cd /tmp/`
-2. `git clone https://github.com/StackVista/sts-agent.git /tmp/sts-agent`
-3. Install required plugins: `sudo -u sts-agent -i bash -c '/opt/stackstate-agent/embedded/bin/pip install nose'`
-4. `ln -s /etc/sts-agent/checks.d/ /tmp/sts-agent/checks.d`
-5. `mkdir -p /tmp/sts-agent/tests.d`
-6. Place check_agent/test_reddit.py into /tmp/sts-agent/tests.d/
-7. Edit /tmp/sts-agent/tests.d/test_reddit.py by changing the `refresh_token` in the `instances`
+1. `git clone https://github.com/StackVista/sts-agent.git /tmp/sts-agent`
+2. Install required plugins: `sudo -u sts-agent -i bash -c '/opt/stackstate-agent/embedded/bin/pip install nose'`
+3. `ln -s /etc/sts-agent/checks.d/ /tmp/sts-agent/checks.d`
+4. `mkdir -p /tmp/sts-agent/tests.d`
+5. Place check_agent/test_reddit.py into /tmp/sts-agent/tests.d/
+6. Edit /tmp/sts-agent/tests.d/test_reddit.py by changing the `refresh_token` in the `instances`
 
 ### How To Run
 
